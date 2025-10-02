@@ -1,0 +1,511 @@
+/*
+Theme Name: Al-Anika Enhanced
+Description: Enhanced e-commerce theme with Arabic/RTL support and improved UX
+Version: 9.2.1
+*/
+
+/* Enhanced Arabic/RTL Support */
+body.rtl, .rtl-layout {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Cairo', 'Noto Sans Arabic', Tahoma, Arial, sans-serif;
+    line-height: 1.8;
+}
+
+/* Arabic Typography */
+.rtl-layout h1, .rtl-layout h2, .rtl-layout h3, .rtl-layout h4, .rtl-layout h5, .rtl-layout h6 {
+    font-family: 'Cairo', 'Noto Sans Arabic', sans-serif;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 1em;
+}
+
+/* Enhanced Header */
+.enhanced-header {
+    background: #ffffff;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.enhanced-header.scrolled {
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.15);
+}
+
+.enhanced-header .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 0;
+    flex-wrap: wrap;
+}
+
+/* Site Branding */
+.site-branding {
+    flex: 0 0 auto;
+}
+
+.site-title a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 28px;
+    transition: color 0.3s ease;
+}
+
+.site-title a:hover {
+    color: #ff6b9d;
+}
+
+/* Enhanced Search */
+.header-search {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 20px;
+}
+
+.search-form {
+    position: relative;
+    display: flex;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.search-form:focus-within {
+    border-color: #ff6b9d;
+    box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+    background: #fff;
+}
+
+.search-field {
+    flex: 1;
+    border: none;
+    padding: 15px 55px 15px 25px;
+    font-size: 14px;
+    outline: none;
+    background: transparent;
+    color: #333;
+}
+
+.search-field::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.search-submit {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(45deg, #ff6b9d, #e55a87);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-submit:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+}
+
+/* Cart Styling */
+.header-cart {
+    position: relative;
+}
+
+.cart-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: 500;
+}
+
+.cart-link:hover {
+    background: linear-gradient(45deg, #ff6b9d, #e55a87);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+}
+
+.cart-count {
+    background: linear-gradient(45deg, #ff6b9d, #e55a87);
+    color: #fff;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    box-shadow: 0 2px 8px rgba(255, 107, 157, 0.4);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Enhanced Navigation */
+.enhanced-nav .nav-container {
+    position: relative;
+}
+
+.enhanced-nav .nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.enhanced-nav .nav-menu li {
+    position: relative;
+}
+
+.enhanced-nav .nav-menu li a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.enhanced-nav .nav-menu li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff6b9d, #4ecdc4);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.enhanced-nav .nav-menu li a:hover::before,
+.enhanced-nav .nav-menu li.current-menu-item a::before {
+    left: 0;
+}
+
+.enhanced-nav .nav-menu li a:hover,
+.enhanced-nav .nav-menu li.current-menu-item a {
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Quick Navigation */
+.quick-nav {
+    display: flex;
+    gap: 12px;
+    margin-left: 20px;
+    flex-wrap: wrap;
+}
+
+.quick-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    background: linear-gradient(45deg, #4ecdc4, #45b7aa);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(78, 205, 196, 0.3);
+}
+
+.quick-nav-link:hover {
+    background: linear-gradient(45deg, #45b7aa, #3da39c);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(78, 205, 196, 0.4);
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+    background: rgba(255, 107, 157, 0.1);
+}
+
+.menu-toggle-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-toggle-icon span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* RTL Specific Adjustments */
+.rtl-layout .search-field {
+    text-align: right;
+    padding: 15px 25px 15px 55px;
+}
+
+.rtl-layout .search-submit {
+    right: auto;
+    left: 8px;
+}
+
+.rtl-layout .cart-count {
+    right: auto;
+    left: -8px;
+}
+
+.rtl-layout .quick-nav {
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+.rtl-layout .enhanced-nav .nav-menu li a::before {
+    left: auto;
+    right: -100%;
+}
+
+.rtl-layout .enhanced-nav .nav-menu li a:hover::before,
+.rtl-layout .enhanced-nav .nav-menu li.current-menu-item a::before {
+    right: 0;
+    left: auto;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 1024px) {
+    .quick-nav {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    
+    .rtl-layout .quick-nav {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .enhanced-header .header-content {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .site-branding {
+        text-align: center;
+    }
+    
+    .header-search {
+        order: 2;
+        max-width: none;
+        margin: 0;
+    }
+    
+    .header-cart {
+        order: 1;
+        align-self: flex-end;
+    }
+    
+    .enhanced-nav {
+        order: 3;
+    }
+    
+    .enhanced-nav .nav-menu {
+        justify-content: center;
+        gap: 5px;
+    }
+    
+    .enhanced-nav .nav-menu li a {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    
+    .quick-nav {
+        justify-content: center;
+        margin: 10px 0 0 0;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+    
+    .rtl-layout .mobile-menu-toggle {
+        right: auto;
+        left: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .enhanced-header .header-content {
+        padding: 10px 0;
+    }
+    
+    .search-field {
+        padding: 12px 50px 12px 20px;
+        font-size: 13px;
+    }
+    
+    .rtl-layout .search-field {
+        padding: 12px 20px 12px 50px;
+    }
+    
+    .search-submit {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .enhanced-nav .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .enhanced-nav .nav-menu li a {
+        padding: 10px 20px;
+        min-width: 120px;
+        text-align: center;
+    }
+    
+    .quick-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+}
+
+/* Performance Optimizations */
+.enhanced-header * {
+    will-change: transform;
+}
+
+.search-submit, .cart-link, .nav-menu li a, .quick-nav-link {
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Accessibility Improvements */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    z-index: 999999;
+    color: #fff;
+    background: #000;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 3px;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 7px;
+}
+
+/* Focus styles for better accessibility */
+.search-field:focus,
+.cart-link:focus,
+.nav-menu a:focus,
+.quick-nav-link:focus {
+    outline: 2px solid #ff6b9d;
+    outline-offset: 2px;
+}
+
+/* Demo Store Enhancement */
+.demo-store {
+    background: linear-gradient(45deg, #ff6b9d, #4ecdc4);
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    font-weight: 500;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading States */
+.search-form.loading .search-submit {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* Enhanced Fallback Menu */
+.fallback-menu {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.fallback-menu .nav-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.fallback-menu .nav-menu li a {
+    display: block;
+    padding: 8px 16px;
+    background: #fff;
+    color: #333;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.fallback-menu .nav-menu li a:hover {
+    background: #ff6b9d;
+    color: #fff;
+    border-color: #ff6b9d;
+}

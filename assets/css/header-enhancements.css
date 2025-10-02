@@ -1,0 +1,403 @@
+/**
+ * Flag Icons CSS for Language Switcher
+ * Simple flag representations using CSS
+ *
+ * @package AlamAlAnika
+ */
+
+/* ==========================================================================
+   FLAG ICONS
+   ========================================================================== */
+
+.flag-icon {
+    display: inline-block;
+    width: 16px;
+    height: 12px;
+    border-radius: 2px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Saudi Arabia Flag */
+.flag-icon-sa {
+    background: linear-gradient(to bottom, #006C35 0%, #006C35 100%);
+}
+
+.flag-icon-sa::before {
+    content: "🇸🇦";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8px;
+    color: white;
+    font-weight: bold;
+}
+
+/* United States Flag */
+.flag-icon-us {
+    background: linear-gradient(to bottom, #B22234 0%, #B22234 15%, #FFFFFF 15%, #FFFFFF 23%, #B22234 23%, #B22234 31%, #FFFFFF 31%, #FFFFFF 38%, #B22234 38%, #B22234 46%, #FFFFFF 46%, #FFFFFF 54%, #B22234 54%, #B22234 62%, #FFFFFF 62%, #FFFFFF 69%, #B22234 69%, #B22234 77%, #FFFFFF 77%, #FFFFFF 85%, #B22234 85%, #B22234 92%, #FFFFFF 92%, #FFFFFF 100%);
+    position: relative;
+}
+
+.flag-icon-us::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 54%;
+    background: #3C3B6E;
+}
+
+.flag-icon-us::after {
+    content: "⭐";
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    font-size: 4px;
+    color: white;
+    line-height: 1;
+}
+
+/* Yemen Flag */
+.flag-icon-ye {
+    background: linear-gradient(to bottom, #CE1126 0%, #CE1126 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #000000 66.66%, #000000 100%);
+}
+
+/* Alternative simple flag styles using Unicode */
+.flag-unicode {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.flag-unicode.flag-sa::before {
+    content: "🇸🇦";
+}
+
+.flag-unicode.flag-us::before {
+    content: "🇺🇸";
+}
+
+.flag-unicode.flag-ye::before {
+    content: "🇾🇪";
+}
+
+/* ==========================================================================
+   ENHANCED HEADER RESPONSIVENESS
+   ========================================================================== */
+
+/* Extra Small Devices */
+@media (max-width: 320px) {
+    .header-container {
+        padding: 0 10px;
+    }
+    
+    .header-row {
+        gap: 5px;
+    }
+    
+    .logo-text {
+        font-size: 18px;
+    }
+    
+    .user-actions {
+        gap: 5px;
+    }
+    
+    .dropdown-toggle {
+        padding: 4px 6px;
+        font-size: 10px;
+    }
+    
+    .search-field {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .search-submit {
+        padding: 8px 12px;
+        min-width: 40px;
+    }
+}
+
+/* Small Devices */
+@media (min-width: 321px) and (max-width: 480px) {
+    .header-search {
+        margin: 15px 0 0 0;
+    }
+    
+    .search-input-container {
+        border-radius: 20px;
+    }
+    
+    .search-field {
+        border-radius: 20px 0 0 20px;
+    }
+    
+    .search-submit {
+        border-radius: 0 20px 20px 0;
+    }
+}
+
+/* Medium Devices */
+@media (min-width: 481px) and (max-width: 768px) {
+    .header-row {
+        height: 70px;
+    }
+    
+    .header-search {
+        order: 3;
+        flex: 1 1 100%;
+        margin: 15px 0 0 0;
+        max-width: 100%;
+    }
+    
+    .action-text {
+        font-size: 9px;
+    }
+}
+
+/* Large Devices */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .header-search {
+        max-width: 350px;
+    }
+    
+    .search-bar-width {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+/* Extra Large Devices */
+@media (min-width: 1025px) {
+    .header-container {
+        max-width: 1200px;
+    }
+    
+    .header-search {
+        max-width: 500px;
+    }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+    .site-header {
+        background: white !important;
+        box-shadow: none !important;
+        border-bottom: 1px solid #000 !important;
+    }
+    
+    .user-actions,
+    .search-container,
+    .dropdown-menu {
+        display: none !important;
+    }
+    
+    .logo-text,
+    .site-title a {
+        color: #000 !important;
+    }
+}
+
+/* ==========================================================================
+   DARK MODE SUPPORT
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    .site-header {
+        background: #1a1a1a;
+        border-color: #333;
+        color: #fff;
+    }
+    
+    .logo-text,
+    .site-title a {
+        color: #fff;
+    }
+    
+    .search-field {
+        background: #2a2a2a;
+        border-color: #444;
+        color: #fff;
+    }
+    
+    .search-field::placeholder {
+        color: #999;
+    }
+    
+    .dropdown-toggle {
+        background: #2a2a2a;
+        border-color: #444;
+        color: #fff;
+    }
+    
+    .dropdown-menu {
+        background: #2a2a2a;
+        border-color: #444;
+    }
+    
+    .dropdown-item {
+        color: #fff;
+    }
+    
+    .dropdown-item:hover {
+        background: #333;
+    }
+    
+    .user-actions a {
+        color: #fff;
+    }
+    
+    .nav-menu a {
+        color: #fff;
+    }
+    
+    .main-navigation {
+        background: #2a2a2a;
+        border-color: #444;
+    }
+}
+
+/* ==========================================================================
+   HIGH CONTRAST MODE
+   ========================================================================== */
+
+@media (prefers-contrast: high) {
+    .site-header {
+        border-bottom-width: 2px;
+    }
+    
+    .search-field,
+    .dropdown-toggle {
+        border-width: 2px;
+    }
+    
+    .user-actions a:focus,
+    .dropdown-toggle:focus,
+    .search-field:focus {
+        outline: 3px solid #000;
+        outline-offset: 2px;
+    }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .site-header,
+    .logo-link,
+    .search-input-container,
+    .search-submit,
+    .dropdown-menu,
+    .user-actions a,
+    .hamburger span {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    .cart-count,
+    .wishlist-count {
+        animation: none !important;
+    }
+}
+
+/* ==========================================================================
+   LOADING STATES
+   ========================================================================== */
+
+.header-loading .search-suggestions {
+    opacity: 0.7;
+}
+
+.header-loading .search-suggestions::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #3498db;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+.header-hidden {
+    transform: translateY(-100%);
+}
+
+.header-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.header-transparent {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+/* Mobile menu active states */
+.menu-toggle.active .hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* ==========================================================================
+   CUSTOMIZER PREVIEW ENHANCEMENTS
+   ========================================================================== */
+
+.customizer-preview-mode .site-header {
+    position: relative;
+    z-index: 99999;
+}
+
+.customizer-preview-mode .site-header::before {
+    content: "تحرير القائمة العلوية";
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0073aa;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0.9;
+    pointer-events: none;
+}

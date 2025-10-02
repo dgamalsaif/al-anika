@@ -1,0 +1,498 @@
+/*
+ * Al-Anika Theme - Unified Responsive Strategy
+ * Version: 9.2.0
+ * Standardized breakpoints for consistent mobile experience
+ */
+
+/* ==========================================================================
+   CSS CUSTOM PROPERTIES (RESPONSIVE)
+   ========================================================================== */
+:root {
+    --mobile-portrait: 480px;
+    --mobile-landscape: 768px;
+    --tablet: 1024px;
+    --desktop: 1200px;
+    --large-desktop: 1440px;
+    
+    /* Container widths */
+    --container-mobile: 100%;
+    --container-tablet: 750px;
+    --container-desktop: 1170px;
+    --container-large: 1320px;
+    
+    /* Grid columns */
+    --grid-columns-mobile: 1;
+    --grid-columns-tablet: 2;
+    --grid-columns-desktop: 4;
+    
+    /* Spacing scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+}
+
+/* ==========================================================================
+   MOBILE PORTRAIT (up to 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+    /* Container & Layout */
+    .container {
+        max-width: var(--container-mobile);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    /* Header Mobile */
+    .site-header {
+        padding: var(--spacing-sm) 0;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .site-branding {
+        order: 1;
+        text-align: center;
+    }
+    
+    .site-branding .site-title {
+        font-size: 1.5rem;
+    }
+    
+    .header-search {
+        order: 3;
+        width: 100%;
+        margin: 0;
+    }
+    
+    .header-actions {
+        order: 2;
+        justify-content: center;
+        gap: var(--spacing-md);
+    }
+    
+    /* Navigation Mobile */
+    .primary-navigation {
+        display: none; /* Use mobile menu */
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        cursor: pointer;
+    }
+    
+    /* Hero Section Mobile */
+    .hero-section,
+    .revolutionary-hero {
+        height: 300px;
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .hero-title {
+        font-size: 1.75rem !important;
+        line-height: 1.3;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .hero-content {
+        text-align: center;
+    }
+    
+    /* Revolutionary Hero - Stack Columns */
+    .revolutionary-hero-container {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .hero-column {
+        min-height: 200px;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    /* Product Grid Mobile */
+    .woocommerce ul.products,
+    .products-grid,
+    .flash-products,
+    .related-products-grid {
+        grid-template-columns: repeat(var(--grid-columns-mobile), 1fr) !important;
+        gap: var(--spacing-sm);
+    }
+    
+    /* Product Cards Mobile */
+    .product-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .product-title {
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+    
+    .product-price {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    
+    /* Category Navigation Mobile */
+    .category-nav,
+    .smart-category-navigation {
+        overflow-x: auto;
+        padding: var(--spacing-sm);
+        gap: var(--spacing-sm);
+    }
+    
+    .category-item {
+        min-width: 80px;
+        padding: var(--spacing-xs);
+        font-size: 0.8rem;
+    }
+    
+    /* Flash Sale Mobile */
+    .flash-sale-countdown {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .countdown-item {
+        font-size: 1.2rem;
+    }
+    
+    /* Filter Sidebar Mobile */
+    .filter-sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        z-index: 9999;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+        padding: var(--spacing-lg);
+    }
+    
+    .filter-sidebar.active {
+        left: 0;
+    }
+    
+    /* Footer Mobile */
+    .site-footer {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-lg);
+    }
+    
+    .footer-section {
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    /* Buttons Mobile */
+    .btn,
+    .button,
+    .woocommerce-button {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9rem;
+        min-height: 44px; /* Touch target */
+    }
+    
+    /* Forms Mobile */
+    input[type="text"],
+    input[type="email"],
+    input[type="search"],
+    textarea,
+    select {
+        padding: var(--spacing-sm);
+        font-size: 16px; /* Prevent zoom on iOS */
+        min-height: 44px;
+    }
+}
+
+/* ==========================================================================
+   MOBILE LANDSCAPE (481px to 768px)
+   ========================================================================== */
+@media (min-width: 481px) and (max-width: 768px) {
+    .container {
+        max-width: var(--container-mobile);
+        padding: 0 var(--spacing-md);
+    }
+    
+    /* Header adjustments */
+    .header-content {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .header-search {
+        flex: 1;
+        max-width: 400px;
+        margin: 0 var(--spacing-md);
+    }
+    
+    /* Hero adjustments */
+    .hero-section {
+        height: 400px;
+    }
+    
+    .hero-title {
+        font-size: 2rem !important;
+    }
+    
+    /* Product grid - 2 columns */
+    .woocommerce ul.products,
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: var(--spacing-md);
+    }
+    
+    /* Revolutionary hero - 2 columns */
+    .revolutionary-hero-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .hero-column {
+        flex: 1 1 50%;
+        min-height: 250px;
+    }
+    
+    .hero-column:last-child {
+        flex: 1 1 100%;
+    }
+}
+
+/* ==========================================================================
+   TABLET (769px to 1024px)
+   ========================================================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: var(--container-tablet);
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+    }
+    
+    /* Header tablet */
+    .header-content {
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .header-search {
+        flex: 1;
+        max-width: 500px;
+        margin: 0 var(--spacing-lg);
+    }
+    
+    /* Navigation tablet */
+    .primary-navigation {
+        display: block;
+    }
+    
+    .nav-menu {
+        display: flex;
+        gap: var(--spacing-md);
+    }
+    
+    /* Hero tablet */
+    .hero-section {
+        height: 500px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+    
+    /* Product grid - 3 columns */
+    .woocommerce ul.products,
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: var(--spacing-lg);
+    }
+    
+    /* Revolutionary hero - full 3 columns */
+    .revolutionary-hero-container {
+        flex-direction: row;
+        height: 500px;
+    }
+    
+    .hero-column {
+        flex: 1;
+        min-height: auto;
+    }
+    
+    /* Sidebar tablet */
+    .filter-sidebar {
+        position: relative;
+        width: 250px;
+        height: auto;
+        overflow-y: visible;
+    }
+}
+
+/* ==========================================================================
+   DESKTOP (1025px to 1199px)
+   ========================================================================== */
+@media (min-width: 1025px) and (max-width: 1199px) {
+    .container {
+        max-width: var(--container-desktop);
+        margin: 0 auto;
+        padding: 0 var(--spacing-lg);
+    }
+    
+    /* Product grid - 4 columns */
+    .woocommerce ul.products,
+    .products-grid {
+        grid-template-columns: repeat(var(--grid-columns-desktop), 1fr) !important;
+    }
+    
+    /* Hero full size */
+    .hero-section {
+        height: 600px;
+    }
+    
+    .hero-title {
+        font-size: 3rem !important;
+    }
+}
+
+/* ==========================================================================
+   LARGE DESKTOP (1200px+)
+   ========================================================================== */
+@media (min-width: 1200px) {
+    .container {
+        max-width: var(--container-large);
+        margin: 0 auto;
+        padding: 0 var(--spacing-xl);
+    }
+    
+    /* Product grid - 5 columns for large screens */
+    .woocommerce ul.products,
+    .products-grid {
+        grid-template-columns: repeat(5, 1fr) !important;
+    }
+    
+    /* Hero extra large */
+    .hero-section {
+        height: 700px;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem !important;
+    }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY & PERFORMANCE
+   ========================================================================== */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .product-card {
+        border: 2px solid currentColor;
+    }
+    
+    .btn,
+    .button {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Print styles */
+@media print {
+    .header-actions,
+    .mobile-menu-toggle,
+    .product-actions,
+    .filter-sidebar {
+        display: none !important;
+    }
+    
+    .product-card {
+        break-inside: avoid;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+}
+
+/* ==========================================================================
+   UTILITY CLASSES FOR RESPONSIVE BEHAVIOR
+   ========================================================================== */
+
+/* Hide/show elements at different breakpoints */
+.mobile-only {
+    display: block;
+}
+
+.tablet-up {
+    display: none;
+}
+
+.desktop-only {
+    display: none;
+}
+
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none;
+    }
+    
+    .tablet-up {
+        display: block;
+    }
+}
+
+@media (min-width: 1025px) {
+    .desktop-only {
+        display: block;
+    }
+    
+    .tablet-only {
+        display: none;
+    }
+}
+
+/* Responsive text alignment */
+.text-center-mobile {
+    text-align: center;
+}
+
+@media (min-width: 769px) {
+    .text-center-mobile {
+        text-align: left;
+    }
+}
+
+/* Responsive spacing */
+.spacing-responsive {
+    margin-bottom: var(--spacing-sm);
+}
+
+@media (min-width: 769px) {
+    .spacing-responsive {
+        margin-bottom: var(--spacing-lg);
+    }
+}

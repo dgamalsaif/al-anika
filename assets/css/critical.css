@@ -1,0 +1,280 @@
+/*
+ * CRITICAL CSS - Above-the-fold styles for fast loading
+ * Al-Anika Theme - SHEIN-Inspired Performance Optimized
+ * Version: 7.0.0
+ */
+
+/* Reset & Base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6; 
+    color: #333;
+    background: #fff;
+}
+
+/* Critical Layout */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+
+/* SHEIN-Style Header */
+.site-header {
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header-main {
+    padding: 12px 0;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+/* SHEIN-Style Logo */
+.logo-section {
+    flex-shrink: 0;
+}
+
+.site-logo {
+    height: 40px;
+    width: auto;
+}
+
+.site-title a {
+    font-size: 28px;
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+/* SHEIN-Style Search */
+.search-section {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 2rem;
+}
+
+.search-form {
+    position: relative;
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    height: 44px;
+    padding: 0 48px 0 16px;
+    border: 2px solid #e5e5e5;
+    border-radius: 22px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-input:focus {
+    border-color: #000;
+}
+
+.search-button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* SHEIN-Style Header Actions */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.header-action {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    position: relative;
+    transition: color 0.2s;
+}
+
+.header-action:hover {
+    color: #000;
+}
+
+.header-action i {
+    font-size: 20px;
+}
+
+.action-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff4444;
+    color: #fff;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+/* SHEIN-Style Navigation */
+.main-navigation {
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.navigation-content {
+    padding: 0;
+}
+
+.primary-nav {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.primary-nav > li {
+    position: relative;
+}
+
+.primary-nav > li > a {
+    display: block;
+    padding: 16px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.primary-nav > li > a:hover,
+.primary-nav > li:hover > a {
+    background: #f8f8f8;
+    color: #000;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger-line {
+    width: 20px;
+    height: 2px;
+    background: #333;
+    transition: all 0.3s;
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .header-content {
+        flex-wrap: wrap;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+        order: -1;
+    }
+    
+    .search-section {
+        order: 3;
+        width: 100%;
+        margin: 16px 0 0 0;
+        max-width: none;
+    }
+    
+    .header-actions {
+        gap: 1rem;
+    }
+    
+    .action-text {
+        display: none;
+    }
+    
+    .primary-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .primary-nav.active {
+        display: flex;
+    }
+    
+    .primary-nav > li {
+        width: 100%;
+    }
+    
+    .primary-nav > li > a {
+        padding: 16px 20px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+}

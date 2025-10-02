@@ -1,0 +1,431 @@
+/**
+ * Daily Rewards System CSS - نظام المكافآت اليومي
+ * Magical animations and styling for the rewards system
+ */
+
+/* Daily Rewards Progress Bar - Floating Side Panel */
+.daily-rewards-progress-bar {
+    position: fixed;
+    top: 50%;
+    right: -280px;
+    transform: translateY(-50%);
+    width: 300px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px 0 0 15px;
+    padding: 20px;
+    z-index: 9999;
+    transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+    font-family: 'Arial', 'Tahoma', sans-serif;
+}
+
+.daily-rewards-progress-bar:hover {
+    right: 0;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.daily-rewards-progress-bar::before {
+    content: '🎁';
+    position: absolute;
+    left: -35px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: bounce-glow 3s infinite;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    border: 3px solid #fff;
+}
+
+@keyframes bounce-glow {
+    0%, 20%, 50%, 80%, 100% { 
+        transform: translateY(-50%) scale(1); 
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    }
+    40% { 
+        transform: translateY(-60%) scale(1.1); 
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+    }
+    60% { 
+        transform: translateY(-55%) scale(1.05); 
+        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+    }
+}
+
+.progress-title {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.magic-icon {
+    animation: sparkle-rotate 2s linear infinite;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+@keyframes sparkle-rotate {
+    0% { transform: rotate(0deg) scale(1); opacity: 1; }
+    25% { transform: rotate(90deg) scale(1.2); opacity: 0.8; }
+    50% { transform: rotate(180deg) scale(1); opacity: 1; }
+    75% { transform: rotate(270deg) scale(1.2); opacity: 0.8; }
+    100% { transform: rotate(360deg) scale(1); opacity: 1; }
+}
+
+.progress-days {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    position: relative;
+    padding: 0 5px;
+}
+
+.progress-day {
+    text-align: center;
+    position: relative;
+    flex: 1;
+}
+
+.day-circle {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+}
+
+.day-circle::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.day-circle:hover::before {
+    opacity: 1;
+    animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.progress-day.completed .day-circle {
+    background: linear-gradient(135deg, #32CD32, #228B22);
+    border-color: #32CD32;
+    transform: scale(1.15);
+    box-shadow: 0 5px 15px rgba(50, 205, 50, 0.4);
+}
+
+.progress-day.completed .day-circle::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    animation: checkmark-pop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes checkmark-pop {
+    0% { transform: translate(-50%, -50%) scale(0); }
+    80% { transform: translate(-50%, -50%) scale(1.2); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.progress-day.current .day-circle {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-color: #FFD700;
+    animation: current-pulse 2s infinite;
+    transform: scale(1.1);
+}
+
+@keyframes current-pulse {
+    0% { 
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+        transform: scale(1.1);
+    }
+    70% { 
+        box-shadow: 0 0 0 15px rgba(255, 215, 0, 0);
+        transform: scale(1.15);
+    }
+    100% { 
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+        transform: scale(1.1);
+    }
+}
+
+.day-number {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.progress-day.completed .day-number,
+.progress-day.current .day-number {
+    display: none;
+}
+
+.day-reward-icon {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 14px;
+    background: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    animation: icon-bounce 2s infinite;
+}
+
+@keyframes icon-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+.day-label {
+    color: rgba(255,255,255,0.9);
+    font-size: 11px;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.progress-line {
+    height: 6px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-line::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: progress-shimmer 2s infinite;
+}
+
+@keyframes progress-shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #32CD32, #FFD700, #FF6B6B);
+    border-radius: 3px;
+    width: 0%;
+    transition: width 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    animation: fill-shine 3s infinite;
+}
+
+@keyframes fill-shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Sparkle Effects */
+.sparkle-effect {
+    position: absolute;
+    pointer-events: none;
+    animation: sparkle-float 3s infinite;
+    z-index: 10;
+}
+
+@keyframes sparkle-float {
+    0%, 100% { 
+        transform: translateY(0) scale(0.8); 
+        opacity: 0.6; 
+    }
+    50% { 
+        transform: translateY(-8px) scale(1.2); 
+        opacity: 1; 
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .daily-rewards-progress-bar {
+        width: 280px;
+        right: -260px;
+        padding: 15px;
+    }
+    
+    .daily-rewards-progress-bar::before {
+        left: -32px;
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+    }
+    
+    .day-circle {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .day-number {
+        font-size: 12px;
+    }
+    
+    .day-label {
+        font-size: 10px;
+    }
+    
+    .progress-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .daily-rewards-progress-bar {
+        width: 260px;
+        right: -240px;
+        padding: 12px;
+    }
+    
+    .day-circle {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .day-number {
+        font-size: 11px;
+    }
+    
+    .progress-title {
+        font-size: 15px;
+    }
+}
+
+/* Animation for when progress bar is first shown */
+.daily-rewards-progress-bar.animate-in {
+    animation: slide-in-right 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes slide-in-right {
+    0% {
+        right: -400px;
+        opacity: 0;
+    }
+    100% {
+        right: -280px;
+        opacity: 1;
+    }
+}
+
+/* Custom scrollbar for progress bar if content overflows */
+.daily-rewards-progress-bar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.daily-rewards-progress-bar::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+}
+
+.daily-rewards-progress-bar::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+}
+
+.daily-rewards-progress-bar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.5);
+}
+
+/* Accessibility */
+.daily-rewards-progress-bar:focus-within {
+    outline: 2px solid #FFD700;
+    outline-offset: 2px;
+}
+
+.day-circle:focus {
+    outline: 2px solid #FFD700;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .daily-rewards-progress-bar {
+        border: 2px solid #fff;
+    }
+    
+    .day-circle {
+        border-width: 3px;
+    }
+    
+    .progress-line {
+        border: 1px solid rgba(255,255,255,0.5);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .daily-rewards-progress-bar::before,
+    .day-circle,
+    .progress-fill,
+    .sparkle-effect,
+    .magic-icon {
+        animation: none;
+    }
+    
+    .daily-rewards-progress-bar {
+        transition: right 0.3s ease;
+    }
+}
+
+/* Print styles */
+@media print {
+    .daily-rewards-progress-bar {
+        display: none;
+    }
+}

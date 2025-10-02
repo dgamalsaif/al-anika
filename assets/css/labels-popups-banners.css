@@ -1,0 +1,825 @@
+/**
+ * Labels, Popups and Banners CSS
+ * نظام الشارات والنوافذ المنبثقة واللافتات التفاعلية
+ */
+
+/* Product Labels */
+.alam-product-labels {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: calc(100% - 30px);
+}
+
+.product-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    transform: scale(0);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+    max-width: fit-content;
+}
+
+.product-label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.product-label:hover::before {
+    left: 100%;
+}
+
+.product-label.animate-in {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.product-label.hover-effect {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Specific label colors */
+.product-label-new { background: linear-gradient(135deg, #4ecdc4, #44a08d); }
+.product-label-hot { background: linear-gradient(135deg, #ff6b6b, #ee5a52); }
+.product-label-bestseller { background: linear-gradient(135deg, #ffd700, #ffb347); color: #333; }
+.product-label-trending { background: linear-gradient(135deg, #667eea, #764ba2); }
+.product-label-exclusive { background: linear-gradient(135deg, #8360c3, #2ebf91); }
+.product-label-premium { background: linear-gradient(135deg, #667eea, #764ba2); }
+.product-label-recommended { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+.product-label-limited { background: linear-gradient(135deg, #ff8a00, #e52e71); }
+.product-label-sale { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
+.product-label-out_of_stock { background: linear-gradient(135deg, #bdc3c7, #95a5a6); }
+.product-label-custom { background: linear-gradient(135deg, var(--custom-color, #667eea), var(--custom-color-dark, #764ba2)); }
+
+/* Announcement Banner */
+.alam-announcement-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.alam-announcement-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.alam-announcement-banner.banner-info { background: linear-gradient(135deg, #667eea, #764ba2); }
+.alam-announcement-banner.banner-sale { background: linear-gradient(135deg, #ff6b6b, #ee5a52); }
+.alam-announcement-banner.banner-warning { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.alam-announcement-banner.banner-success { background: linear-gradient(135deg, #4ecdc4, #44a08d); }
+.alam-announcement-banner.banner-new { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.banner-icon {
+    font-size: 24px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-5px); }
+    60% { transform: translateY(-3px); }
+}
+
+.banner-text {
+    flex: 1;
+    text-align: center;
+    font-weight: 600;
+}
+
+.banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.banner-cta {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.banner-cta:hover {
+    background: rgba(255,255,255,0.3);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.banner-close {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.banner-close:hover {
+    background: rgba(255,255,255,0.3);
+    transform: rotate(90deg);
+}
+
+/* Floating Sale Banner */
+.floating-sale-banner {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+    z-index: 1000;
+    max-width: 400px;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    direction: rtl;
+}
+
+.floating-sale-banner.show {
+    transform: translateX(0);
+}
+
+.floating-sale-banner.minimized .banner-text,
+.floating-sale-banner.minimized .banner-countdown {
+    display: none;
+}
+
+.floating-sale-banner .banner-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.floating-sale-banner .banner-icon {
+    font-size: 28px;
+}
+
+.floating-sale-banner .banner-text {
+    flex: 1;
+    text-align: right;
+}
+
+.floating-sale-banner .banner-text strong {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.floating-sale-banner .banner-text span {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.banner-countdown {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255,255,255,0.2);
+    padding: 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.countdown-item {
+    text-align: center;
+    min-width: 35px;
+}
+
+.countdown-number {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.countdown-label {
+    font-size: 10px;
+    opacity: 0.8;
+}
+
+.countdown-separator {
+    font-size: 18px;
+    font-weight: 700;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+.floating-sale-banner .banner-cta {
+    background: white;
+    color: #ff6b6b;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.floating-sale-banner .banner-cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.banner-minimize {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.banner-minimize:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* Popups Base Styles */
+.alam-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    direction: rtl;
+}
+
+.alam-popup.show {
+    display: flex;
+}
+
+.popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.popup-container {
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    transform: scale(0.7);
+    opacity: 0;
+}
+
+.popup-close {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(0,0,0,0.1);
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    color: #666;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.popup-close:hover {
+    background: rgba(0,0,0,0.2);
+    color: #333;
+    transform: rotate(90deg);
+}
+
+/* Exit Intent Popup */
+.exit-intent-popup .popup-container {
+    max-width: 600px;
+}
+
+.exit-intent-popup .popup-header {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    padding: 25px 30px;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+}
+
+.exit-intent-popup .popup-header h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.exit-intent-popup .popup-content {
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.exit-intent-popup .popup-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.exit-intent-popup h4 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.exit-intent-popup p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.popup-form {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    display: flex;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group input {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group button {
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.form-group button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.popup-features {
+    display: grid;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: right;
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-right: 3px solid #4ecdc4;
+}
+
+.feature-icon {
+    font-size: 18px;
+}
+
+.form-error {
+    background: #ffebee;
+    color: #c62828;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 1px solid #ffcdd2;
+}
+
+.form-success {
+    background: #e8f5e8;
+    color: #2e7d32;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 1px solid #c8e6c9;
+}
+
+/* Newsletter Popup */
+.newsletter-popup .popup-container {
+    max-width: 450px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.newsletter-popup .popup-content {
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+}
+
+.popup-visual {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.newsletter-icon {
+    font-size: 80px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.floating-element {
+    position: absolute;
+    font-size: 24px;
+}
+
+.floating-element:nth-child(1) { top: 10%; right: 20%; }
+.floating-element:nth-child(2) { top: 30%; left: 15%; }
+.floating-element:nth-child(3) { bottom: 20%; right: 10%; }
+
+.newsletter-popup h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.newsletter-popup p {
+    margin-bottom: 25px;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.newsletter-form .form-group {
+    margin-bottom: 20px;
+}
+
+.newsletter-form input {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.newsletter-form button {
+    background: white;
+    color: #667eea;
+}
+
+.newsletter-form button.success {
+    background: #4ecdc4;
+    color: white;
+}
+
+.popup-benefits {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.popup-benefits span {
+    background: rgba(255,255,255,0.1);
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-size: 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+}
+
+.popup-note {
+    font-size: 12px;
+    opacity: 0.7;
+    margin: 0;
+}
+
+/* Cookie Notice */
+.cookie-notice {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+    z-index: 9999;
+    direction: rtl;
+}
+
+.cookie-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cookie-icon {
+    font-size: 32px;
+}
+
+.cookie-text {
+    flex: 1;
+}
+
+.cookie-text p {
+    margin: 0;
+    color: #666;
+    line-height: 1.5;
+}
+
+.cookie-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.cookie-accept,
+.cookie-customize,
+.cookie-decline {
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.cookie-accept {
+    background: #4ecdc4;
+    color: white;
+    border-color: #4ecdc4;
+}
+
+.cookie-accept:hover {
+    background: #44a08d;
+    border-color: #44a08d;
+}
+
+.cookie-customize {
+    background: white;
+    color: #667eea;
+    border-color: #667eea;
+}
+
+.cookie-customize:hover {
+    background: #667eea;
+    color: white;
+}
+
+.cookie-decline {
+    background: white;
+    color: #666;
+    border-color: #ddd;
+}
+
+.cookie-decline:hover {
+    background: #f5f5f5;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .banner-content {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .banner-actions {
+        justify-content: center;
+    }
+    
+    .floating-sale-banner {
+        right: 10px;
+        bottom: 10px;
+        max-width: calc(100vw - 20px);
+        padding: 15px;
+    }
+    
+    .floating-sale-banner .banner-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .popup-container {
+        width: 95%;
+        margin: 0 auto;
+    }
+    
+    .exit-intent-popup .popup-content,
+    .newsletter-popup .popup-content {
+        padding: 30px 20px;
+    }
+    
+    .form-group {
+        flex-direction: column;
+    }
+    
+    .cookie-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .cookie-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .alam-product-labels {
+        top: 10px;
+        left: 10px;
+        max-width: calc(100% - 20px);
+    }
+    
+    .product-label {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+    
+    .banner-text {
+        font-size: 14px;
+    }
+    
+    .floating-sale-banner .banner-text strong {
+        font-size: 16px;
+    }
+    
+    .floating-sale-banner .banner-text span {
+        font-size: 12px;
+    }
+    
+    .countdown-number {
+        font-size: 14px;
+    }
+    
+    .countdown-label {
+        font-size: 9px;
+    }
+    
+    .exit-intent-popup h4 {
+        font-size: 22px;
+    }
+    
+    .newsletter-popup h3 {
+        font-size: 20px;
+    }
+    
+    .popup-benefits {
+        gap: 8px;
+    }
+    
+    .popup-benefits span {
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .product-label {
+        border: 2px solid #000;
+    }
+    
+    .alam-announcement-banner {
+        border: 2px solid #000;
+    }
+    
+    .popup-container {
+        border: 3px solid #000;
+    }
+    
+    .cookie-notice {
+        border: 2px solid #000;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .product-label,
+    .banner-icon,
+    .countdown-separator,
+    .floating-element {
+        animation: none;
+    }
+    
+    .popup-container {
+        transform: none;
+    }
+    
+    .floating-sale-banner {
+        transition: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .alam-announcement-banner,
+    .floating-sale-banner,
+    .alam-popup,
+    .cookie-notice {
+        display: none !important;
+    }
+}
