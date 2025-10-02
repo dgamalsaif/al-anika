@@ -1,0 +1,603 @@
+/**
+ * Phase 5: Enhanced Interactive Systems - Master Integration CSS
+ * الدمج الشامل للأنظمة التفاعلية المتطورة
+ */
+
+/* CSS Custom Properties (CSS Variables) */
+:root {
+    /* Default Color Scheme */
+    --alam-primary: #667eea;
+    --alam-secondary: #764ba2;
+    --alam-accent: #4ecdc4;
+    --alam-success: #4ecdc4;
+    --alam-warning: #ffa726;
+    --alam-error: #ff6b6b;
+    --alam-info: #42a5f5;
+    
+    /* RGB Values for Alpha */
+    --alam-primary-rgb: 102, 126, 234;
+    --alam-secondary-rgb: 118, 75, 162;
+    --alam-accent-rgb: 78, 205, 196;
+    
+    /* Spacing Scale */
+    --alam-space-xs: 0.25rem;
+    --alam-space-sm: 0.5rem;
+    --alam-space-md: 1rem;
+    --alam-space-lg: 1.5rem;
+    --alam-space-xl: 2rem;
+    --alam-space-2xl: 3rem;
+    
+    /* Typography Scale */
+    --alam-text-xs: 0.75rem;
+    --alam-text-sm: 0.875rem;
+    --alam-text-base: 1rem;
+    --alam-text-lg: 1.125rem;
+    --alam-text-xl: 1.25rem;
+    --alam-text-2xl: 1.5rem;
+    --alam-text-3xl: 1.875rem;
+    --alam-text-4xl: 2.25rem;
+    
+    /* Border Radius Scale */
+    --alam-radius-sm: 0.25rem;
+    --alam-radius-md: 0.5rem;
+    --alam-radius-lg: 0.75rem;
+    --alam-radius-xl: 1rem;
+    --alam-radius-2xl: 1.5rem;
+    --alam-radius-full: 9999px;
+    
+    /* Shadow Scale */
+    --alam-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --alam-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --alam-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --alam-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+    --alam-shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+    
+    /* Animation Timing */
+    --alam-duration-fast: 0.15s;
+    --alam-duration-normal: 0.3s;
+    --alam-duration-slow: 0.5s;
+    --alam-duration-slower: 0.75s;
+    
+    /* Z-Index Scale */
+    --alam-z-dropdown: 1000;
+    --alam-z-sticky: 1020;
+    --alam-z-fixed: 1030;
+    --alam-z-modal-backdrop: 1040;
+    --alam-z-modal: 1050;
+    --alam-z-popover: 1060;
+    --alam-z-tooltip: 1070;
+    --alam-z-toast: 1080;
+}
+
+/* Global Resets and Base Styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Enhanced Body Styles */
+body.alam-a11y-enhanced {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus Management */
+.alam-a11y-enhanced *:focus {
+    outline: 2px solid var(--alam-primary);
+    outline-offset: 2px;
+}
+
+.alam-a11y-enhanced *:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Skip Links */
+.alam-skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--alam-primary);
+    color: white;
+    padding: 8px;
+    border-radius: var(--alam-radius-md);
+    text-decoration: none;
+    z-index: var(--alam-z-toast);
+    transition: top var(--alam-duration-fast);
+}
+
+.alam-skip-link:focus {
+    top: 6px;
+}
+
+/* Utility Classes */
+.alam-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.alam-not-sr-only {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* Color Utilities */
+.alam-primary-bg { background-color: var(--alam-primary); }
+.alam-secondary-bg { background-color: var(--alam-secondary); }
+.alam-accent-bg { background-color: var(--alam-accent); }
+.alam-success-bg { background-color: var(--alam-success); }
+.alam-warning-bg { background-color: var(--alam-warning); }
+.alam-error-bg { background-color: var(--alam-error); }
+.alam-info-bg { background-color: var(--alam-info); }
+
+.alam-primary-color { color: var(--alam-primary); }
+.alam-secondary-color { color: var(--alam-secondary); }
+.alam-accent-color { color: var(--alam-accent); }
+.alam-success-color { color: var(--alam-success); }
+.alam-warning-color { color: var(--alam-warning); }
+.alam-error-color { color: var(--alam-error); }
+.alam-info-color { color: var(--alam-info); }
+
+/* Gradient Utilities */
+.alam-gradient-primary {
+    background: linear-gradient(135deg, var(--alam-primary), var(--alam-secondary));
+}
+
+.alam-gradient-accent {
+    background: linear-gradient(135deg, var(--alam-accent), var(--alam-primary));
+}
+
+.alam-gradient-success {
+    background: linear-gradient(135deg, var(--alam-success), var(--alam-accent));
+}
+
+.alam-gradient-warm {
+    background: linear-gradient(135deg, var(--alam-warning), var(--alam-error));
+}
+
+/* Animation Utilities */
+.alam-animate-fade-in {
+    animation: alamFadeIn var(--alam-duration-normal) ease-out;
+}
+
+.alam-animate-slide-up {
+    animation: alamSlideUp var(--alam-duration-normal) ease-out;
+}
+
+.alam-animate-slide-down {
+    animation: alamSlideDown var(--alam-duration-normal) ease-out;
+}
+
+.alam-animate-slide-left {
+    animation: alamSlideLeft var(--alam-duration-normal) ease-out;
+}
+
+.alam-animate-slide-right {
+    animation: alamSlideRight var(--alam-duration-normal) ease-out;
+}
+
+.alam-animate-scale-in {
+    animation: alamScaleIn var(--alam-duration-normal) ease-out;
+}
+
+.alam-animate-bounce {
+    animation: alamBounce var(--alam-duration-slow) ease-out;
+}
+
+.alam-animate-pulse {
+    animation: alamPulse 2s ease-in-out infinite;
+}
+
+.alam-animate-spin {
+    animation: alamSpin 1s linear infinite;
+}
+
+/* Keyframe Animations */
+@keyframes alamFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes alamSlideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes alamSlideDown {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes alamSlideLeft {
+    from { transform: translateX(30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes alamSlideRight {
+    from { transform: translateX(-30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes alamScaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes alamBounce {
+    0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+    40%, 43% { transform: translateY(-15px); }
+    70% { transform: translateY(-8px); }
+    90% { transform: translateY(-3px); }
+}
+
+@keyframes alamPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes alamSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Loading States */
+.alam-loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.alam-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: alamShimmer 1.5s infinite;
+}
+
+@keyframes alamShimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Interactive Elements */
+.alam-interactive {
+    cursor: pointer;
+    transition: all var(--alam-duration-fast) ease;
+    user-select: none;
+}
+
+.alam-interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--alam-shadow-lg);
+}
+
+.alam-interactive:active {
+    transform: translateY(0);
+    box-shadow: var(--alam-shadow-md);
+}
+
+/* Button Enhancements */
+.alam-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--alam-space-sm);
+    padding: var(--alam-space-sm) var(--alam-space-lg);
+    border: none;
+    border-radius: var(--alam-radius-lg);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--alam-duration-fast) ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.alam-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform var(--alam-duration-normal) ease;
+}
+
+.alam-btn:hover::before {
+    transform: translateX(100%);
+}
+
+.alam-btn-primary {
+    background: var(--alam-gradient-primary);
+    color: white;
+}
+
+.alam-btn-secondary {
+    background: var(--alam-gradient-accent);
+    color: white;
+}
+
+.alam-btn-outline {
+    background: transparent;
+    border: 2px solid var(--alam-primary);
+    color: var(--alam-primary);
+}
+
+.alam-btn-outline:hover {
+    background: var(--alam-primary);
+    color: white;
+}
+
+/* Card Enhancements */
+.alam-card {
+    background: white;
+    border-radius: var(--alam-radius-xl);
+    box-shadow: var(--alam-shadow-md);
+    overflow: hidden;
+    transition: all var(--alam-duration-normal) ease;
+    position: relative;
+}
+
+.alam-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--alam-shadow-xl);
+}
+
+.alam-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--alam-gradient-primary);
+    transform: scaleX(0);
+    transition: transform var(--alam-duration-normal) ease;
+}
+
+.alam-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Mobile Optimizations */
+.alam-mobile-optimized .alam-interactive:hover {
+    transform: none;
+}
+
+.alam-mobile-optimized .alam-card:hover {
+    transform: none;
+}
+
+.alam-mobile-optimized .alam-btn::before {
+    display: none;
+}
+
+/* Touch Optimizations */
+.touch-optimized {
+    min-height: 44px;
+    min-width: 44px;
+    padding: var(--alam-space-md);
+}
+
+/* Performance Mode */
+.alam-performance-mode * {
+    animation-duration: 0.1s !important;
+    transition-duration: 0.1s !important;
+}
+
+.alam-performance-mode .alam-loading::after,
+.alam-performance-mode .alam-btn::before {
+    display: none;
+}
+
+/* High Contrast Mode */
+.alam-high-contrast {
+    --alam-primary: #0000ff;
+    --alam-secondary: #800080;
+    --alam-accent: #008080;
+    --alam-text: #000000;
+    --alam-bg: #ffffff;
+}
+
+.alam-high-contrast * {
+    border: 1px solid #000 !important;
+}
+
+.alam-high-contrast .alam-btn {
+    border: 3px solid #000 !important;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --alam-bg: #1a1a1a;
+        --alam-text: #ffffff;
+        --alam-border: #333333;
+        --alam-card-bg: #2a2a2a;
+    }
+    
+    body {
+        background: var(--alam-bg);
+        color: var(--alam-text);
+    }
+    
+    .alam-card {
+        background: var(--alam-card-bg);
+        border: 1px solid var(--alam-border);
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .alam-loading::after {
+        display: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .alam-interactive,
+    .alam-btn,
+    .alam-floating-*,
+    .alam-popup,
+    .alam-notification-system {
+        display: none !important;
+    }
+    
+    .alam-card {
+        box-shadow: none !important;
+        border: 1px solid #000;
+    }
+    
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Layout Utilities */
+.alam-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--alam-space-lg);
+}
+
+.alam-grid {
+    display: grid;
+    gap: var(--alam-space-lg);
+}
+
+.alam-grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+.alam-grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.alam-grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.alam-grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+.alam-flex {
+    display: flex;
+}
+
+.alam-flex-col {
+    flex-direction: column;
+}
+
+.alam-items-center {
+    align-items: center;
+}
+
+.alam-justify-center {
+    justify-content: center;
+}
+
+.alam-justify-between {
+    justify-content: space-between;
+}
+
+.alam-gap-xs { gap: var(--alam-space-xs); }
+.alam-gap-sm { gap: var(--alam-space-sm); }
+.alam-gap-md { gap: var(--alam-space-md); }
+.alam-gap-lg { gap: var(--alam-space-lg); }
+.alam-gap-xl { gap: var(--alam-space-xl); }
+
+/* Spacing Utilities */
+.alam-p-xs { padding: var(--alam-space-xs); }
+.alam-p-sm { padding: var(--alam-space-sm); }
+.alam-p-md { padding: var(--alam-space-md); }
+.alam-p-lg { padding: var(--alam-space-lg); }
+.alam-p-xl { padding: var(--alam-space-xl); }
+
+.alam-m-xs { margin: var(--alam-space-xs); }
+.alam-m-sm { margin: var(--alam-space-sm); }
+.alam-m-md { margin: var(--alam-space-md); }
+.alam-m-lg { margin: var(--alam-space-lg); }
+.alam-m-xl { margin: var(--alam-space-xl); }
+
+/* Typography Utilities */
+.alam-text-xs { font-size: var(--alam-text-xs); }
+.alam-text-sm { font-size: var(--alam-text-sm); }
+.alam-text-base { font-size: var(--alam-text-base); }
+.alam-text-lg { font-size: var(--alam-text-lg); }
+.alam-text-xl { font-size: var(--alam-text-xl); }
+.alam-text-2xl { font-size: var(--alam-text-2xl); }
+.alam-text-3xl { font-size: var(--alam-text-3xl); }
+.alam-text-4xl { font-size: var(--alam-text-4xl); }
+
+.alam-font-light { font-weight: 300; }
+.alam-font-normal { font-weight: 400; }
+.alam-font-medium { font-weight: 500; }
+.alam-font-semibold { font-weight: 600; }
+.alam-font-bold { font-weight: 700; }
+
+.alam-text-center { text-align: center; }
+.alam-text-left { text-align: left; }
+.alam-text-right { text-align: right; }
+
+/* Border Utilities */
+.alam-rounded-sm { border-radius: var(--alam-radius-sm); }
+.alam-rounded-md { border-radius: var(--alam-radius-md); }
+.alam-rounded-lg { border-radius: var(--alam-radius-lg); }
+.alam-rounded-xl { border-radius: var(--alam-radius-xl); }
+.alam-rounded-2xl { border-radius: var(--alam-radius-2xl); }
+.alam-rounded-full { border-radius: var(--alam-radius-full); }
+
+/* Shadow Utilities */
+.alam-shadow-sm { box-shadow: var(--alam-shadow-sm); }
+.alam-shadow-md { box-shadow: var(--alam-shadow-md); }
+.alam-shadow-lg { box-shadow: var(--alam-shadow-lg); }
+.alam-shadow-xl { box-shadow: var(--alam-shadow-xl); }
+.alam-shadow-2xl { box-shadow: var(--alam-shadow-2xl); }
+.alam-shadow-none { box-shadow: none; }
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .alam-grid-cols-2,
+    .alam-grid-cols-3,
+    .alam-grid-cols-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .alam-container {
+        padding: 0 var(--alam-space-md);
+    }
+}
+
+@media (max-width: 768px) {
+    .alam-grid-cols-3,
+    .alam-grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .alam-grid-cols-4 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
