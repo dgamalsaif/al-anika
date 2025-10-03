@@ -1,1 +1,24 @@
 
+{
+  "name": "dgamalsaif/al-anika",
+  "description": "Al Anika WordPress Theme",
+  "type": "project",
+  "license": "mit",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "johnpbloch/wordpress": "^6.0",
+    "wpackagist-theme/al-anika": "*"
+  },
+  "extra": {
+    "installer-paths": {
+      "wp-content/themes/{$name}/": ["type:wordpress-theme"],
+      "wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
+    }
+  },
+  "minimum-stability": "stable"
+}
