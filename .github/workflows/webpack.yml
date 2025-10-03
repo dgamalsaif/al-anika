@@ -1,28 +1,66 @@
-name: NodeJS with Webpack
+name: Theme Build and Validation
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [main]
   pull_request:
-    branches: [ "main" ]
+    branches: [main]
 
 jobs:
-  build:
+  js-build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
-
+        node-version: [18.x, 20.x, 22.x]  # Test across versions for compatibility
     steps:
-    - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v5
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'  # Cache dependencies for faster runs
 
-    - name: Build
-      run: |
-        npm install
-        npx webpack
+      - name: Install dependencies
+        run: npm ci  # Use ci for clean install; falls back if package-lock.json exists
+
+      - name: Build assets with Webpack
+        run: npx webpack --mode=production  # Or npm run build if scripted in package.json
+
+      - name: Run JS tests (if any)
+        run: npm test --if-present
+
+  php-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'  # Match your WordPress version
+          tools: composer, phpcs
+
+      - name: Install Composer dependencies (if any)
+        run: composer install --no-dev --prefer-dist
+
+      - name: Validate PHP coding standards
+        run: phpcs --standard=WordPress .  # Scans all PHP files against WordPress standards
+
+  deploy:  # Optional: Add for production deployment
+    needs: [js-build, php-validation]  # Only deploy if checks pass
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'  # Deploy only on main branch pushes
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Deploy to server (example via SFTP)
+        uses: pressidium/lftp-mirror-action@v1
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          user: ${{ secrets.SFTP_USER }}
+          pass: ${{ secrets.SFTP_PASS }}
+          remoteDir: /path/to/wp-content/themes/al-anika
