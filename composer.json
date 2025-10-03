@@ -1,24 +1,26 @@
-
 {
   "name": "dgamalsaif/al-anika",
   "description": "Al Anika WordPress Theme",
-  "type": "project",
-  "license": "mit",
+  "type": "wordpress-theme",
   "repositories": [
     {
-      "type": "composer",
-      "url": "https://wpackagist.org"
+      "type": "vcs",
+      "url": "https://github.com/dgamalsaif/al-anika.git"
     }
   ],
   "require": {
-    "johnpbloch/wordpress": "^6.0",
-    "wpackagist-theme/al-anika": "*"
+    "dgamalsaif/al-anika": "dev-main"
   },
   "extra": {
     "installer-paths": {
-      "wp-content/themes/{$name}/": ["type:wordpress-theme"],
-      "wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
+      "wp-content/themes/{$name}/": ["type:wordpress-theme"]
     }
   },
-  "minimum-stability": "stable"
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  }
 }
