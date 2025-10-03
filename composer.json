@@ -1,7 +1,5 @@
 {
-  "name": "dgamalsaif/al-anika",
-  "description": "Al Anika WordPress Theme",
-  "type": "wordpress-theme",
+  "name": "myvendor/myproject",
   "repositories": [
     {
       "type": "vcs",
@@ -11,16 +9,6 @@
   "require": {
     "dgamalsaif/al-anika": "dev-main"
   },
-  "extra": {
-    "installer-paths": {
-      "wp-content/themes/{$name}/": ["type:wordpress-theme"]
-    }
-  },
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "config": {
-    "allow-plugins": {
-      "composer/installers": true
-    }
-  }
+  "prefer-stable": true
 }
